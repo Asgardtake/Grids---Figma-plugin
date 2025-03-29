@@ -279,9 +279,11 @@
     opacity: 0.2;
     pointer-events: none;
 }
-.no-hover:hover {
-    outline: none !important;
-    box-shadow: none !important;
+/* Деактивиране на hover за FourthScreen */
+.container.no-hover:hover {
+    background-color: inherit !important;
     cursor: default !important;
+    box-shadow: none !important;
 }
+
 
