@@ -1,0 +1,21 @@
+{
+  "name": "Assassins grids",
+  "id": "1481612271643000400",
+  "api": "1.0.0",
+  "editorType": ["figma"],
+  "main": "code.js",
+  "ui": "ui.html",
+  "menu": [
+    {
+      "name": "Assassins grids",
+      "command": "open"
+    }
+  ],
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": [
+      "https://i.postimg.cc",
+      "https://cdn.jsdelivr.net"
+    ]
+  }
+}
