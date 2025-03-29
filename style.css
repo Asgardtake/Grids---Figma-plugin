@@ -130,6 +130,18 @@
             text-align: left;
         }
 
+.container:hover {
+  outline: 1px solid #cd0037;
+  box-shadow: inset 0 0 0 1px rgba(206, 0, 41, 0.991);
+    cursor: default !important;
+}
+.no-hover {    
+    outline: none !important;
+    box-shadow: none !important;
+    cursor: default !important;
+}
+
+
         .section {
             background-color: #333;
             padding: 15px;
@@ -276,11 +288,3 @@
     pointer-events: none;
 }
 /* Деактивиране на hover ефекти за .container, когато има .no-hover */
-.no-hover {
-    pointer-events: none !important;
-    outline: none !important;
-    box-shadow: none !important;
-    cursor: default !important;
-}
-
-
