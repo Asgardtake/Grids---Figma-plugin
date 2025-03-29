@@ -279,8 +279,7 @@
     opacity: 0.2;
     pointer-events: none;
 }
-.no-hover:hover {
+.container.no-hover:hover {
     outline: none !important;
     box-shadow: none !important;
-    cursor: default !important;
 }
