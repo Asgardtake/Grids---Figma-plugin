@@ -279,11 +279,17 @@
     opacity: 0.2;
     pointer-events: none;
 }
-/* Деактивиране на hover за FourthScreen */
+/* Деактивиране на hover ефекти за .container, когато има .no-hover */
+.container.no-hover {
+    pointer-events: none !important;
+}
+
 .container.no-hover:hover {
     background-color: inherit !important;
-    cursor: default !important;
+    outline: none !important;
     box-shadow: none !important;
+    cursor: default !important;
 }
+
 
 
