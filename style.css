@@ -259,7 +259,7 @@
 }
 
 .radio-container input:checked {
-    border: 2px solid #cd0037; /* Променяме бордера при избран бутон */
+    border: 2px solid #cd0037; 
 }
 
 .radio-container input:checked::before {
@@ -287,4 +287,4 @@
     opacity: 0.2;
     pointer-events: none;
 }
-/* Деактивиране на hover ефекти за .container, когато има .no-hover */
+
