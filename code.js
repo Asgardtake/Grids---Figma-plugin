@@ -22,6 +22,9 @@ figma.ui.onmessage = async (msg) => {
     console.log("🚀 Създаваме нов Frame и прилагаме Grid...");
 
     // 1. Създаваме нов Frame
+
+    console.log("Получени grid параметри:", msg);
+
     const frame = figma.createFrame();
     frame.resize(msg.width, msg.height);
     frame.name = "Assassins Grid Frame";
@@ -36,12 +39,13 @@ figma.ui.onmessage = async (msg) => {
       sectionSize: msg.columnWidth,
       gutterSize: msg.gutter,
       count: msg.count,
-      alignment: msg.type, // 'center', 'min', 'max'
+      alignment: msg.alignment, // <- ВАЖНО!
       color: { r: 1, g: 0, b: 0 },
       visible: true,
       opacity: msg.opacity,
       offset: 0
     }];
+    
 
     // 4. Добавяме го в страницата и го центрираме в изгледа
     figma.currentPage.appendChild(frame);
