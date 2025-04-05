@@ -1,36 +1,38 @@
-
-
-
-// ✅ Показваме UI интерфейса
+// Показваме UI интерфейса
 figma.showUI(__html__, { width: 500, height: 660 });
 
-// ✅ Изпращаме начално съобщение към UI
-figma.ui.postMessage({ type: "loadInitialScreen" });
+// Слушаме съобщения от UI
+figma.ui.onmessage = async (msg) => {
+  if (msg.type === 'execute-grid') {
+    // 1. Създаване на нов Frame
+    const frame = figma.createFrame();
+    frame.name = "Assassins Grid Frame";
 
-// ✅ Слушаме съобщения от UI
-figma.ui.onmessage = (msg) => {
-  if (msg.type === "ready") {
-    console.log("✅ UI е готово.");
-  }
+    // 2. Задаваме размерите на Frame-а
+    frame.resize(msg.width, msg.height);
 
-  if (msg.type === "switchScreen") {
-    console.log("➡️ Получено: смяна на екран");
-    figma.ui.postMessage({ type: "loadNewScreen" });
-  }
+    // 3. Центрираме във viewport-а
+    frame.x = figma.viewport.center.x - msg.width / 2;
+    frame.y = figma.viewport.center.y - msg.height / 2;
 
-  if (msg.type === "executeFinal") {
-    console.log("🚀 Стартираме създаване на проекта...");
-    // Тук можеш да добавиш логика за създаване на фрейм/грид и т.н.
-    figma.notify("✅ Проектът е създаден успешно!");
-    figma.closePlugin();
-  }
+    // 4. Създаваме Grid layout
+    frame.layoutGrids = [{
+      pattern: "COLUMNS",
+      alignment: msg.type.toLowerCase(), // CENTER, MIN, MAX -> center, min, max
+      count: msg.count,
+      gutterSize: msg.gutter,
+      sectionSize: msg.columnWidth,
+      offset: 0,
+      visible: true,
+      color: { r: 1, g: 0, b: 0 }, // червено (FF0000)
+      opacity: msg.opacity
+    }];
 
-  if (msg.type === "setProgress") {
-    console.log("📶 Прогрес стъпка: ", msg.step);
-    figma.ui.postMessage({ type: "setProgress", step: msg.step });
-  }
+    // 5. Добавяме го в текущата страница и го показваме
+    figma.currentPage.appendChild(frame);
+    figma.viewport.scrollAndZoomIntoView([frame]);
 
-  if (msg.type === "loadInitialScreen") {
-    figma.ui.postMessage({ type: "loadInitialScreen" });
+    // 6. Нотификация
+    figma.notify("✅ Grid frame created successfully!");
   }
 };
