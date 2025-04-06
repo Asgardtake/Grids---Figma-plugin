@@ -1,4 +1,4 @@
-figma.showUI(__html__, { width: 500, height: 660 });
+figma.showUI(__html__, { width: 500, height: 600 });
 
 figma.ui.onmessage = async (msg) => {
   if (msg.type === 'execute-grid') {
@@ -9,12 +9,13 @@ figma.ui.onmessage = async (msg) => {
       columnWidth,
       gutter,
       type,
-      opacity
+      opacity,
+      frameName
     } = msg;
 
     const frame = figma.createFrame();
     frame.resize(width, height);
-    frame.name = "Assassins Grid Frame";
+    frame.name = frameName;
     frame.fills = [{ type: "SOLID", color: { r: 1, g: 1, b: 1 } }];
 
     // ✅ Превръщаме frame в Auto Layout хоризонтално
@@ -57,8 +58,34 @@ figma.ui.onmessage = async (msg) => {
     frame.appendChild(gridGroup);
     figma.currentPage.appendChild(frame);
 
+    // 🧠 НОВО: позициониране така, че да не застъпва други обекти
+    const nodes = figma.currentPage.children;
+    let maxY = 0;
+    let foundObjects = false;
+
+    for (const node of nodes) {
+      if (node.type !== "FRAME" && node.type !== "GROUP" && node.type !== "INSTANCE" && node.type !== "COMPONENT") continue;
+      const bottomY = node.y + node.height;
+      if (bottomY > maxY) {
+        maxY = bottomY;
+        foundObjects = true;
+      }
+    }
+
+    // Ако има други обекти – позиционираме под тях
+    if (foundObjects) {
+      frame.x = 0;
+      frame.y = maxY + 100; // малко отстояние
+    } else {
+      // Ако няма обекти, позиционираме центрирано
+      frame.x = figma.viewport.center.x - width / 2;
+      frame.y = figma.viewport.center.y - height / 2;
+    }
+
     figma.viewport.scrollAndZoomIntoView([frame]);
     figma.notify("✅ Grid успешно създаден!");
-    figma.closePlugin();
+
+    // ✅ Връщаме плъгина към началния екран
+    figma.ui.postMessage({ type: 'reset-ui' });
   }
 };
