@@ -54,6 +54,8 @@ figma.ui.onmessage = async (msg) => {
 
     const totalWidth = (columnWidth * count) + (gutter * (count - 1));
     gridGroup.resize(totalWidth, height);
+    gridGroup.locked = true;
+
 
     frame.appendChild(gridGroup);
     figma.currentPage.appendChild(frame);
