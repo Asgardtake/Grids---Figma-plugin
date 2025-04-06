@@ -288,7 +288,7 @@
     pointer-events: none;
 }
 #settings-summary.p_14px {
-    margin-bottom: 12px;
+    margin-bottom: 12px !important;
 }
 /* Подравняване отгоре */
 /* Подравняване отгоре */
