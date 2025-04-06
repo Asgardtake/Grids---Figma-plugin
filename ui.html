@@ -22,47 +22,19 @@
     let selectedDeviceType = null;
 
     const gridParams = {
-      "1920 × 1080": {
-        width: 1920, height: 1080, count: 12, columnWidth: 56, gutter: 32, alignment: "CENTER", opacity: 0.1
-      },
-      "1440 × 900": {
-        width: 1440, height: 900, count: 12, columnWidth: 56, gutter: 32, alignment: "CENTER", opacity: 0.1
-      },
-      "1366 × 768": {
-        width: 1366, height: 768, count: 12, columnWidth: 50, gutter: 30, alignment: "CENTER", opacity: 0.1
-      },
-      "1280 × 720": {
-        width: 1280, height: 720, count: 12, columnWidth: 50, gutter: 30, alignment: "CENTER", opacity: 0.1
-      },
-      "1024 × 768": {
-        width: 1024, height: 768, count: 12, columnWidth: 40, gutter: 20, alignment: "CENTER", opacity: 0.1
-      },
-      "768 × 1024": {
-        width: 768, height: 1024, count: 8, columnWidth: 40, gutter: 20, alignment: "CENTER", opacity: 0.1
-      },
-      "414 × 896": {
-        width: 414, height: 896, count: 4, columnWidth: 60, gutter: 20, alignment: "CENTER", opacity: 0.1
-      },
-      "375 × 812": {
-        width: 375, height: 812, count: 4, columnWidth: 60, gutter: 20, alignment: "CENTER", opacity: 0.1
-      },
-      "360 × 640": {
-        width: 360, height: 640, count: 4, columnWidth: 60, gutter: 20, alignment: "CENTER", opacity: 0.1
-      },
-      "320 × 568": {
-        width: 320, height: 568, count: 4, columnWidth: 60, gutter: 20, alignment: "CENTER", opacity: 0.1
-      }
+      "1920 × 1080": { width: 1920, height: 1080, count: 12, columnWidth: 56, gutter: 32, alignment: "CENTER", opacity: 0.1 },
+      "1440 × 900": { width: 1440, height: 900, count: 12, columnWidth: 56, gutter: 32, alignment: "CENTER", opacity: 0.1 },
+      "1366 × 768": { width: 1366, height: 768, count: 12, columnWidth: 50, gutter: 30, alignment: "CENTER", opacity: 0.1 },
+      "1280 × 720": { width: 1280, height: 720, count: 12, columnWidth: 50, gutter: 30, alignment: "CENTER", opacity: 0.1 },
+      "1024 × 768": { width: 1024, height: 768, count: 12, columnWidth: 40, gutter: 20, alignment: "CENTER", opacity: 0.1 },
+      "768 × 1024": { width: 768, height: 1024, count: 8, columnWidth: 40, gutter: 20, alignment: "CENTER", opacity: 0.1 },
+      "414 × 896": { width: 414, height: 896, count: 4, columnWidth: 60, gutter: 20, alignment: "CENTER", opacity: 0.1 },
+      "375 × 812": { width: 375, height: 812, count: 4, columnWidth: 60, gutter: 20, alignment: "CENTER", opacity: 0.1 },
+      "360 × 640": { width: 360, height: 640, count: 4, columnWidth: 60, gutter: 20, alignment: "CENTER", opacity: 0.1 },
+      "320 × 568": { width: 320, height: 568, count: 4, columnWidth: 60, gutter: 20, alignment: "CENTER", opacity: 0.1 }
     };
 
-    document.getElementById("next-btn").addEventListener("click", function () {
-      loadSecondScreen();
-    });
-
-    function updateProgressBar(step) {
-      let progressPercent = ((step - 1) / (totalSteps - 1)) * 100;
-      document.querySelector(".progress-fill").style.width = `${progressPercent}%`;
-      document.querySelector(".progress-circle").style.left = `calc(${progressPercent}% - 7px)`;
-    }
+    document.getElementById("next-btn").addEventListener("click", loadSecondScreen);
 
     function loadSecondScreen() {
       currentStep = 2;
@@ -116,206 +88,143 @@
       document.getElementById("back-btn").addEventListener("click", loadInitialScreen);
     }
 
-   
-function loadThirdScreen() {
-  currentStep = 3;
-  document.body.classList.remove("initial-screen");
-  document.getElementById("content").classList.add("others-screen");
+    function loadThirdScreen() {
+      currentStep = 3;
+      document.body.classList.remove("initial-screen");
+      document.getElementById("content").classList.add("others-screen");
 
-  let resolutionOptions = "";
+      const resolutions = selectedDeviceType === "desktop"
+        ? ["1920 × 1080", "1440 × 900", "1366 × 768", "1280 × 720", "1024 × 768"]
+        : ["768 × 1024", "414 × 896", "375 × 812", "360 × 640", "320 × 568"];
 
-  const desktopResolutions = [
-    "1920 × 1080",
-    "1440 × 900",
-    "1366 × 768",
-    "1280 × 720",
-    "1024 × 768"
-  ];
+      const options = resolutions.map(res => `
+        <label class="radio-container">
+          <input type="radio" name="resolution" value="${res}">
+          <span>${res}</span>
+        </label>
+      `).join("");
 
-  const mobileResolutions = [
-    "768 × 1024",
-    "414 × 896",
-    "375 × 812",
-    "360 × 640",
-    "320 × 568"
-  ];
+      const deviceIcon = selectedDeviceType === "desktop"
+        ? "https://cdn.jsdelivr.net/gh/Asgardtake/Grids---Figma-plugin@main/Desktop-icon.png"
+        : "https://cdn.jsdelivr.net/gh/Asgardtake/Grids---Figma-plugin@main/Mobile-icon.png";
 
-  const resolutions = selectedDeviceType === "desktop" ? desktopResolutions : mobileResolutions;
+      const deviceTitle = selectedDeviceType.charAt(0).toUpperCase() + selectedDeviceType.slice(1);
 
-  resolutions.forEach(res => {
-    resolutionOptions += `
-      <label class="radio-container">
-        <input type="radio" name="resolution" value="${res}">
-        <span>${res}</span>
-      </label>
-    `;
-  });
-
-  document.getElementById("content").innerHTML = `
-    <div class="progress-bar">
-      <div class="progress-line">
-        <div class="progress-fill" style="width: 66%;"></div>
-        <div class="progress-circle" style="left: calc(66% - 7px);"></div>
-      </div>
-      <div class="progress-steps">
-        <div class="progress-step active">Choose template</div>
-        <div class="progress-step active">Device resolutions</div>
-        <div class="progress-step">Grid style</div>
-      </div>
-    </div>
-    <h1>⌘ Resolutions</h1>
-    <div class="container">
-      <div class="section">
-        <img src="https://i.postimg.cc/90BJzk1p/Desktop-icon.png" alt="Device Icon">
-        <h2>${selectedDeviceType === "desktop" ? "Desktop" : "Mobile"}</h2>
-      </div>
-      <p class="p_18px">Choose resolution</p>
-      <form id="resolutionForm">
-        ${resolutionOptions}
-      </form>
-    </div>
-
-    <div class="buttons-container">
-      <button id="back-btn" class="backbtn_outgray">Back</button>
-      <button id="next-btn" class="disabled-button">Next</button>
-    </div>
-  `;
-
-  document.getElementById("back-btn").addEventListener("click", loadSecondScreen);
-
-  const radios = document.querySelectorAll('input[name="resolution"]');
-  const nextBtn = document.getElementById("next-btn");
-
-  if (selectedResolution) {
-    const selectedRadio = document.querySelector(`input[name="resolution"][value="${selectedResolution}"]`);
-    if (selectedRadio) {
-      selectedRadio.checked = true;
-      nextBtn.classList.remove("disabled-button");
-    }
-  }
-
-  radios.forEach(radio => {
-    radio.addEventListener("change", () => {
-      selectedResolution = radio.value;
-      nextBtn.classList.remove("disabled-button");
-    });
-  });
-
-  nextBtn.addEventListener("click", function () {
-    if (!nextBtn.classList.contains("disabled-button")) {
-      loadFourthScreen();
-    }
-  });
-}
-
-function loadFourthScreen() {
-  currentStep = 4;
-  const grid = gridParams[selectedResolution];
-
-  document.body.classList.remove("initial-screen");
-  document.getElementById("content").classList.add("others-screen");
-  document.getElementById("content").innerHTML = `
-    <div class="progress-bar">
-      <div class="progress-line">
-        <div class="progress-fill" style="width: 100%;"></div>
-        <div class="progress-circle" style="left: calc(100% - 7px);"></div>
-      </div>
-      <div class="progress-steps">
-        <div class="progress-step active">Choose template</div>
-        <div class="progress-step active">Device resolutions</div>
-        <div class="progress-step active">Grid style</div>
-      </div>
-    </div>
-
-    <h1>⌘ Information</h1>
-
-    <div class="container no-hover" id="settings-summary">
-      <div class="section" style="margin-bottom: 16px;">
-        <img src="${selectedDeviceType === 'desktop'
-          ? 'https://cdn.jsdelivr.net/gh/Asgardtake/Grids---Figma-plugin@main/Desktop_icon.png'
-          : 'https://cdn.jsdelivr.net/gh/Asgardtake/Grids---Figma-plugin@main/Mobile_icon.png'}" 
-          alt="Device Icon" style="width: 24px; height: 24px;">
-        <h2>Your settings</h2>
-      </div>
-
-      <div style="margin-top: 12px;">
-        <p class="p_18px" style="color: white; margin-bottom: 6px;">
-          ${selectedDeviceType.charAt(0).toUpperCase() + selectedDeviceType.slice(1)}
-        </p>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 18px; margin-bottom: 10px;">
-          <span class="body_16">Resolution</span>
-          <span class="body_16">${selectedResolution}</span>
+      document.getElementById("content").innerHTML = `
+        <div class="progress-bar">
+          <div class="progress-line">
+            <div class="progress-fill" style="width: 66%;"></div>
+            <div class="progress-circle" style="left: calc(66% - 7px);"></div>
+          </div>
+          <div class="progress-steps">
+            <div class="progress-step active">Choose template</div>
+            <div class="progress-step active">Device resolutions</div>
+            <div class="progress-step">Grid style</div>
+          </div>
         </div>
+        <h1>⌘ Resolutions</h1>
+        <div class="container">
+          <div class="section">
+            <img src="${deviceIcon}" alt="Device Icon">
+            <h2>${deviceTitle}</h2>
+          </div>
+          <p class="p_18px">Choose resolution</p>
+          <form id="resolutionForm">${options}</form>
+        </div>
+        <div class="buttons-container">
+          <button id="back-btn" class="backbtn_outgray">Back</button>
+          <button id="next-btn" class="disabled-button">Next</button>
+        </div>
+      `;
 
-        <p class="p_18px" style="color: white; font-weight: bold; margin-bottom: 8px;">Columns</p>
-        <p class="p_14px" style="margin-bottom: 8px;">Count<span style="float: right;">${grid.count}</span></p>
-        <p class="p_14px" style="margin-bottom: 8px;">
-          Color
-          <span style="float: right;">
-            <span style="display:inline-block; width: 12px; height: 12px; background-color: #FF0000; border-radius: 50%; margin-right: 6px;"></span>
-            #FF0000 ${Math.round(grid.opacity * 100)}%
-          </span>
-        </p>
-        <p class="p_14px" style="margin-bottom: 8px;">Type<span style="float: right;">${grid.alignment}</span></p>
-        <p class="p_14px" style="margin-bottom: 8px;">Width<span style="float: right;">${grid.columnWidth}px</span></p>
-        <p class="p_14px">Gutter<span style="float: right;">${grid.gutter}px</span></p>
-      </div>
-    </div>
+      document.getElementById("back-btn").addEventListener("click", loadSecondScreen);
 
-    <div class="buttons-container">
-      <button id="back-btn" class="backbtn_outgray">Back</button>
-      <button id="next-btn">Execute</button>
-    </div>
-  `;
+      const radios = document.querySelectorAll('input[name="resolution"]');
+      const nextBtn = document.getElementById("next-btn");
 
-  document.getElementById("back-btn").addEventListener("click", loadThirdScreen);
+      radios.forEach(radio => {
+        radio.addEventListener("change", () => {
+          selectedResolution = radio.value;
+          nextBtn.classList.remove("disabled-button");
+        });
+      });
 
-  document.getElementById("next-btn").addEventListener("click", () => {
-    parent.postMessage({
-      pluginMessage: {
-        type: 'execute-grid',
-        width: grid.width,
-        height: grid.height,
-        count: grid.count,
-        columnWidth: grid.columnWidth,
-        gutter: grid.gutter,
-        type: grid.alignment.toLowerCase(),
-        opacity: grid.opacity
-      }
-    }, '*');
-  });
-}
+      nextBtn.addEventListener("click", () => {
+        if (!nextBtn.classList.contains("disabled-button")) {
+          loadFourthScreen();
+        }
+      });
+    }
 
+    function loadFourthScreen() {
+      currentStep = 4;
+      const grid = gridParams[selectedResolution];
 
-function loadInitialScreen() {
-  currentStep = 1;
-  document.body.classList.add("initial-screen");
-  document.getElementById("content").classList.remove("others-screen");
+      document.getElementById("content").innerHTML = `
+        <div class="progress-bar">
+          <div class="progress-line">
+            <div class="progress-fill" style="width: 100%;"></div>
+            <div class="progress-circle" style="left: calc(100% - 7px);"></div>
+          </div>
+          <div class="progress-steps">
+            <div class="progress-step active">Choose template</div>
+            <div class="progress-step active">Device resolutions</div>
+            <div class="progress-step active">Grid style</div>
+          </div>
+        </div>
+        <h1>⌘ Information</h1>
+        <div class="container no-hover" id="settings-summary">
+          <div class="section">
+            <img src="${selectedDeviceType === 'desktop'
+              ? 'https://cdn.jsdelivr.net/gh/Asgardtake/Grids---Figma-plugin@main/Desktop_icon.png'
+              : 'https://cdn.jsdelivr.net/gh/Asgardtake/Grids---Figma-plugin@main/Mobile_icon.png'}" 
+              alt="Device Icon" style="width: 24px; height: 24px;">
+            <h2>Your settings</h2>
+          </div>
+          <p class="p_18px">${selectedDeviceType}</p>
+          <p class="p_14px">Resolution<span style="float:right;">${selectedResolution}</span></p>
+          <p class="p_14px">Count<span style="float:right;">${grid.count}</span></p>
+          <p class="p_14px">Width<span style="float:right;">${grid.columnWidth}px</span></p>
+          <p class="p_14px">Gutter<span style="float:right;">${grid.gutter}px</span></p>
+          <p class="p_14px">Type<span style="float:right;">${grid.alignment}</span></p>
+          <p class="p_14px">Opacity<span style="float:right;">${grid.opacity * 100}%</span></p>
+        </div>
+        <div class="buttons-container">
+          <button id="back-btn" class="backbtn_outgray">Back</button>
+          <button id="next-btn" id="execute-btn">Execute</button>
+        </div>
+      `;
 
-  document.getElementById("content").innerHTML = `
-    <img src="https://cdn.jsdelivr.net/gh/Asgardtake/Grids---Figma-plugin@main/logo.png" alt="Plugin Logo">
-    <h1>Assassins grids</h1>
-    <p class="p_18px">Create your project with most known grid system</p>
-    <p class="p_14px">v.1.0 beta</p>
-    <button id="next-btn">Next</button>
-  `;
+      document.getElementById("back-btn").addEventListener("click", loadThirdScreen);
 
-  document.getElementById("next-btn").addEventListener("click", loadSecondScreen);
-}
+      document.getElementById("next-btn").addEventListener("click", () => {
+        parent.postMessage({ pluginMessage: {
+          type: 'execute-grid',
+          width: grid.width,
+          height: grid.height,
+          count: grid.count,
+          columnWidth: grid.columnWidth,
+          gutter: grid.gutter,
+          alignment: grid.alignment.toLowerCase(),
+          opacity: grid.opacity
+        }}, '*');
+      });
+    }
 
-// Започваме от началния екран
-window.onload = () => {
-  loadInitialScreen();
-};
+    function loadInitialScreen() {
+      document.body.classList.add("initial-screen");
+      document.getElementById("content").classList.remove("others-screen");
+      document.getElementById("content").innerHTML = `
+        <img src="https://cdn.jsdelivr.net/gh/Asgardtake/Grids---Figma-plugin@main/logo.png" alt="Plugin Logo">
+        <h1>Assassins grids</h1>
+        <p id="p_18px">Create your project with most known grid system</p>
+        <p id="p_14px">v.1.0 beta</p>
+        <button id="next-btn">Next</button>
+      `;
+      document.getElementById("next-btn").addEventListener("click", loadSecondScreen);
+    }
 
-
-
-
-
-
-
-
-
+    window.onload = loadInitialScreen;
   </script>
 </body>
 </html>
