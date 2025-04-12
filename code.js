@@ -18,10 +18,9 @@ figma.ui.onmessage = async (msg) => {
     frame.name = frameName;
     frame.fills = [{ type: "SOLID", color: { r: 1, g: 1, b: 1 } }];
 
-    // ✅ Превръщаме frame в Auto Layout хоризонтално
     frame.layoutMode = "HORIZONTAL";
-    frame.primaryAxisAlignItems = "CENTER"; // Центриране по хоризонтала
-    frame.counterAxisAlignItems = "MIN"; // Горен край по вертикала
+    frame.primaryAxisAlignItems = "CENTER";
+    frame.counterAxisAlignItems = "MIN";
     frame.primaryAxisSizingMode = "FIXED";
     frame.counterAxisSizingMode = "FIXED";
 
@@ -37,9 +36,27 @@ figma.ui.onmessage = async (msg) => {
     gridGroup.paddingBottom = 0;
     gridGroup.fills = [];
     gridGroup.clipsContent = false;
-
     gridGroup.layoutAlign = "CENTER";
 
+    const totalGridWidth = columnWidth * count + gutter * (count - 1);
+    const remainingSpace = (width - totalGridWidth) / 2;
+    const extraPerSide = Math.floor((remainingSpace + gutter) / (columnWidth + gutter));
+    const totalExtra = extraPerSide * 2;
+
+    // 👉 Създаваме сини колони вляво
+    for (let i = 0; i < extraPerSide; i++) {
+      const blueLeft = figma.createRectangle();
+      blueLeft.resize(columnWidth, height);
+      blueLeft.fills = [{
+        type: "SOLID",
+        color: { r: 0, g: 0.4, b: 1 }, // син цвят
+        opacity: opacity
+      }];
+      blueLeft.name = `Blue Left ${i + 1}`;
+      gridGroup.appendChild(blueLeft);
+    }
+
+    // 👉 Създаваме червени колони (основен grid)
     for (let i = 0; i < count; i++) {
       const rect = figma.createRectangle();
       rect.resize(columnWidth, height);
@@ -52,15 +69,27 @@ figma.ui.onmessage = async (msg) => {
       gridGroup.appendChild(rect);
     }
 
-    const totalWidth = (columnWidth * count) + (gutter * (count - 1));
-    gridGroup.resize(totalWidth, height);
-    gridGroup.locked = true;
+    // 👉 Създаваме сини колони вдясно
+    for (let i = 0; i < extraPerSide; i++) {
+      const blueRight = figma.createRectangle();
+      blueRight.resize(columnWidth, height);
+      blueRight.fills = [{
+        type: "SOLID",
+        color: { r: 0, g: 0.4, b: 1 },
+        opacity: opacity
+      }];
+      blueRight.name = `Blue Right ${i + 1}`;
+      gridGroup.appendChild(blueRight);
+    }
 
+    const totalGroupWidth = (columnWidth * (count + totalExtra)) + (gutter * (count + totalExtra - 1));
+    gridGroup.resize(totalGroupWidth, height);
+    gridGroup.locked = true;
 
     frame.appendChild(gridGroup);
     figma.currentPage.appendChild(frame);
 
-    // 🧠 НОВО: позициониране така, че да не застъпва други обекти
+    // 👉 Позициониране под други обекти
     const nodes = figma.currentPage.children;
     let maxY = 0;
     let foundObjects = false;
@@ -74,20 +103,17 @@ figma.ui.onmessage = async (msg) => {
       }
     }
 
-    // Ако има други обекти – позиционираме под тях
     if (foundObjects) {
       frame.x = 0;
-      frame.y = maxY + 100; // малко отстояние
+      frame.y = maxY + 100;
     } else {
-      // Ако няма обекти, позиционираме центрирано
       frame.x = figma.viewport.center.x - width / 2;
       frame.y = figma.viewport.center.y - height / 2;
     }
 
     figma.viewport.scrollAndZoomIntoView([frame]);
-    figma.notify("✅ Grid успешно създаден!");
+    figma.notify("✅ Grid успешно създаден със stretch колони!");
 
-    // ✅ Връщаме плъгина към началния екран
     figma.ui.postMessage({ type: 'reset-ui' });
   }
 };
