@@ -1,0 +1,35 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+
+[remote "origin"]
+	url = https://github.com/Asgardtake/Grids---Figma-plugin.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+	vscode-merge-base = origin/main
+	vscode-merge-base = origin/main
+
+[alias]
+	pushpurge = !git add -A && \
+	(git commit -m \"Update plugin files\" || echo \"No changes to commit\") && \
+	git pull --rebase && \
+	git push origin main && \
+	curl -s -X GET https://purge.jsdelivr.net/gh/Asgardtake/Grids---Figma-plugin@main/style.css && \
+	curl -s -X GET https://purge.jsdelivr.net/gh/Asgardtake/Grids---Figma-plugin@main/ui.html && \
+	curl -s -X GET https://purge.jsdelivr.net/gh/Asgardtake/Grids---Figma-plugin@main/code.js && \
+	curl -s -X GET https://purge.jsdelivr.net/gh/Asgardtake/Grids---Figma-plugin@main/manifest.json && \
+	curl -s -X GET https://purge.jsdelivr.net/gh/Asgardtake/Grids---Figma-plugin@main/logo.png && \
+	curl -s -X GET https://purge.jsdelivr.net/gh/Asgardtake/Grids---Figma-plugin@main/icon.png && \
+	curl -s -X GET https://purge.jsdelivr.net/gh/Asgardtake/Grids---Figma-plugin@main/Desktop-icon.png && \
+	curl -s -X GET https://purge.jsdelivr.net/gh/Asgardtake/Grids---Figma-plugin@main/Mobile-icon.png && \
+	curl -s -X GET https://purge.jsdelivr.net/gh/Asgardtake/Grids---Figma-plugin@main/Desktop_icon.svg && \
+	curl -s -X GET https://purge.jsdelivr.net/gh/Asgardtake/Grids---Figma-plugin@main/Mobile_icon.svg && \
+	curl -s -X GET https://purge.jsdelivr.net/gh/Asgardtake/Grids---Figma-plugin@main/FontAssets/Rajdhani-Regular.ttf && \
+	curl -s -X GET https://purge.jsdelivr.net/gh/Asgardtake/Grids---Figma-plugin@main/FontAssets/Rajdhani-Bold.ttf
