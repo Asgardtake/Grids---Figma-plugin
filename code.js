@@ -50,8 +50,8 @@ figma.ui.onmessage = async (msg) => {
       blueLeft.fills = [{
         type: "SOLID",
         color: { r: 0, g: 0.4, b: 1 }, // син цвят
-        opacity: opacity
-      }];
+        opacity: 0.1
+       }];
       blueLeft.name = `Blue Left ${i + 1}`;
       gridGroup.appendChild(blueLeft);
     }
@@ -63,7 +63,7 @@ figma.ui.onmessage = async (msg) => {
       rect.fills = [{
         type: "SOLID",
         color: { r: 1, g: 0, b: 0 },
-        opacity: opacity
+        opacity: 0.1
       }];
       rect.name = `Column ${i + 1}`;
       gridGroup.appendChild(rect);
@@ -76,7 +76,7 @@ figma.ui.onmessage = async (msg) => {
       blueRight.fills = [{
         type: "SOLID",
         color: { r: 0, g: 0.4, b: 1 },
-        opacity: opacity
+        opacity: 0.1
       }];
       blueRight.name = `Blue Right ${i + 1}`;
       gridGroup.appendChild(blueRight);
