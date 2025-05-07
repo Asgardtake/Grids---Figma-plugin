@@ -294,7 +294,7 @@
 .ggen_body {
 justify-content: normal;   
 }
-.ggen_launch_btn {
+.ggen_launch_btn, .ggen_execute_btn {
             width: 40%;
             margin-top: 30px;
             padding: 16px 20px;
@@ -306,7 +306,7 @@ justify-content: normal;
             cursor: pointer;
             font-weight: 600;
 }
-.ggen_launch_btn:hover {
+.ggen_launch_btn:hover, .ggen_execute_btn:hover {
     background-color: #fff;
             color: #000;
 }
@@ -420,20 +420,4 @@ text-align: left;
   color: #777;
 }
 
-.ggen_execute_btn {
-  width: 100%;
-  padding: 12px;
-  background-color: #97d43c;
-  color: black;
-  font-weight: bold;
-  border: none;
-  border-radius: 20px;
-  font-size: 14px;
-  margin-top: 8px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
 
-.ggen_execute_btn:hover {
-  background-color: #a9e44a;
-}
