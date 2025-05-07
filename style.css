@@ -428,5 +428,11 @@ text-align: left;
   transform: translateY(-50%);  
   color: #777;
 }
+.ggen_status_icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
 
 
