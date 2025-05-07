@@ -311,7 +311,7 @@ justify-content: normal;
             color: #000;
 }
 .ggen_execute_btn {
-    background-color: #009605;
+border: 1px solid #00BF06;
 }
 .ggen_execute_btn:hover {
     background-color: #00BF06;
