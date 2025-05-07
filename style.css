@@ -311,10 +311,10 @@ justify-content: normal;
             color: #000;
 }
 .ggen_title {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
   color: white;
-  margin: 0;
+  margin: 20px auto;
   font-family: 'Rajdhani', sans-serif;
 }
 
@@ -326,7 +326,7 @@ justify-content: normal;
 }
 
 .ggen_section_title {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: bold;
   color: white;
   margin: 0;
