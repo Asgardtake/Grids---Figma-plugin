@@ -292,7 +292,7 @@
 /* ------------------ */
 /* ------------------ */
 #launch-btn {
-                width: 100%;
+                width: 40%;
             margin-top: 30px;
             padding: 16px 20px;
             font-size: 16px;
@@ -302,4 +302,8 @@
             border-radius: 5px;
             cursor: pointer;
             font-weight: 600;
+}
+#launch-btn:hover {
+    background-color: #fff;
+            color: #000;
 }
