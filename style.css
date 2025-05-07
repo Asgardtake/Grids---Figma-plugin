@@ -311,7 +311,7 @@
   font-size: 22px;
   font-weight: 700;
   color: white;
-  margin-bottom: 16px;
+  margin: 0;
   font-family: 'Rajdhani', sans-serif;
 }
 
@@ -323,7 +323,7 @@
 }
 
 .ggen_section_title {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: bold;
   color: white;
   margin-bottom: 12px;
@@ -343,6 +343,9 @@
   flex: 1;
   font-size: 12px;
   color: #ccc;
+}
+.ggen_info p{
+    margin: 12px 0 0;
 }
 
 .ggen_value {
