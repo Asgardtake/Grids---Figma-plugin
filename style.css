@@ -306,8 +306,15 @@ justify-content: normal;
             cursor: pointer;
             font-weight: 600;
 }
-.ggen_launch_btn:hover, .ggen_execute_btn:hover {
+.ggen_launch_btn:hover {
     background-color: #fff;
+            color: #000;
+}
+.ggen_execute_btn {
+    background-color: #009605;
+}
+.ggen_execute_btn:hover {
+    background-color: #00BF06;
             color: #000;
 }
 .ggen_title {
