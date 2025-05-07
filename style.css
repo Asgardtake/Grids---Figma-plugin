@@ -391,7 +391,7 @@ text-align: left;
 .ggen_input_group label {
   font-size: 12px;
   color: #ccc;
-  margin-bottom: 12px 0 4px;
+  margin: 12px 0 4px;
   display: block;
 text-align: left;
 }
