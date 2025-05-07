@@ -308,25 +308,28 @@
             color: #000;
 }
 .ggen_title {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
   margin-bottom: 16px;
   font-family: 'Rajdhani', sans-serif;
-  color: white;
 }
 
-.ggen_verification_box {
-  background: #2b2b2b;
+.ggen_verification_box, .ggen_settings_box {
+  background-color: #2b2b2b;
   padding: 16px;
-  border-radius: 10px;
-  margin-bottom: 12px;
+  border-radius: 12px;
+  margin-bottom: 16px;
 }
 
 .ggen_section_title {
-  font-weight: 600;
   font-size: 14px;
-  margin-bottom: 8px;
+  font-weight: bold;
   color: white;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .ggen_row {
@@ -336,17 +339,23 @@
 }
 
 .ggen_info {
+  text-align: center;
   flex: 1;
   font-size: 12px;
-  text-align: center;
-  color: white;
+  color: #ccc;
 }
 
 .ggen_value {
+  display: block;
   font-size: 16px;
   font-weight: bold;
-  display: block;
   margin-top: 4px;
+}
+
+.ggen_unit {
+  font-size: 12px;
+  font-weight: normal;
+  color: #8f8f8f;
 }
 
 .ggen_green {
@@ -355,19 +364,14 @@
 
 .ggen_status {
   font-size: 18px;
+  display: inline-block;
+  margin-top: 4px;
 }
 
 .ggen_note {
   font-size: 12px;
-  margin: 8px 0;
-  color: #bbb;
-}
-
-.ggen_settings_box {
-  background: #2b2b2b;
-  padding: 16px;
-  border-radius: 10px;
-  margin-bottom: 16px;
+  color: #aaa;
+  margin-bottom: 8px;
 }
 
 .ggen_inputs {
@@ -376,43 +380,51 @@
   gap: 12px;
 }
 
-.ggen_inputs label {
-  position: relative;
-  display: block;
+.ggen_input_group label {
   font-size: 12px;
-  color: #ddd;
+  color: #ccc;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.ggen_input_wrapper {
+  position: relative;
 }
 
 .ggen_input {
   width: 100%;
-  margin-top: 4px;
   padding: 8px;
-  border-radius: 6px;
   background: #1a1a1a;
   color: white;
   border: 1px solid #444;
+  border-radius: 8px;
   font-size: 14px;
+  box-sizing: border-box;
 }
 
-.ggen_unit {
+.ggen_input_unit {
   position: absolute;
-  right: 8px;
-  bottom: 10px;
-  font-size: 12px;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
   color: #777;
 }
 
 .ggen_execute_btn {
   width: 100%;
-  background: #6fbf3c;
-  border: none;
-  padding: 10px;
-  font-size: 14px;
+  padding: 12px;
+  background-color: #97d43c;
+  color: black;
   font-weight: bold;
+  border: none;
   border-radius: 20px;
+  font-size: 14px;
+  margin-top: 8px;
   cursor: pointer;
-  color: #000;
+  transition: background 0.2s ease;
 }
+
 .ggen_execute_btn:hover {
-  background: #82d44a;
+  background-color: #a9e44a;
 }
