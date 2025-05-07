@@ -291,7 +291,7 @@
 /* GRID GENERATOR CSS */
 /* ------------------ */
 /* ------------------ */
-#launch-btn {
+#ggen-btn {
                 width: 40%;
             margin-top: 30px;
             padding: 16px 20px;
@@ -303,7 +303,7 @@
             cursor: pointer;
             font-weight: 600;
 }
-#launch-btn:hover {
+.launch-btn:hover {
     background-color: #fff;
             color: #000;
 }
