@@ -291,6 +291,9 @@
 /* GRID GENERATOR CSS */
 /* ------------------ */
 /* ------------------ */
+.ggen_body {
+    margin:0;
+}
 .ggen_launch_btn {
             width: 40%;
             margin-top: 30px;
