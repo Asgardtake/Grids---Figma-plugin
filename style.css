@@ -291,3 +291,15 @@
 /* GRID GENERATOR CSS */
 /* ------------------ */
 /* ------------------ */
+#launch-btn {
+                width: 100%;
+            margin-top: 30px;
+            padding: 16px 20px;
+            font-size: 16px;
+            background-color: #171717;
+            color: white;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+}
