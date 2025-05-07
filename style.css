@@ -420,11 +420,12 @@ text-align: left;
 }
 
 .ggen_input_unit {
+    font-size: 12px;
+    font-weight: 600;
   position: absolute;
   right: 10px;
   top: 50%;
-  transform: translateY(-50%);
-  font-size: 11px;
+  transform: translateY(-50%);  
   color: #777;
 }
 
