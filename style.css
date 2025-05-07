@@ -292,8 +292,8 @@
 /* ------------------ */
 /* ------------------ */
 .ggen_body {
-    justify-content: top;
-    margin: 40px 0;
+justify-content: normal;
+    margin-top: 20px;
 }
 .ggen_launch_btn {
             width: 40%;
