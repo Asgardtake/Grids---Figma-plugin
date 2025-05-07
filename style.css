@@ -307,3 +307,112 @@
     background-color: #fff;
             color: #000;
 }
+.ggen_title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  font-family: 'Rajdhani', sans-serif;
+  color: white;
+}
+
+.ggen_verification_box {
+  background: #2b2b2b;
+  padding: 16px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.ggen_section_title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.ggen_row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ggen_info {
+  flex: 1;
+  font-size: 12px;
+  text-align: center;
+  color: white;
+}
+
+.ggen_value {
+  font-size: 16px;
+  font-weight: bold;
+  display: block;
+  margin-top: 4px;
+}
+
+.ggen_green {
+  color: #84e35f;
+}
+
+.ggen_status {
+  font-size: 18px;
+}
+
+.ggen_note {
+  font-size: 12px;
+  margin: 8px 0;
+  color: #bbb;
+}
+
+.ggen_settings_box {
+  background: #2b2b2b;
+  padding: 16px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.ggen_inputs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.ggen_inputs label {
+  position: relative;
+  display: block;
+  font-size: 12px;
+  color: #ddd;
+}
+
+.ggen_input {
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px;
+  border-radius: 6px;
+  background: #1a1a1a;
+  color: white;
+  border: 1px solid #444;
+  font-size: 14px;
+}
+
+.ggen_unit {
+  position: absolute;
+  right: 8px;
+  bottom: 10px;
+  font-size: 12px;
+  color: #777;
+}
+
+.ggen_execute_btn {
+  width: 100%;
+  background: #6fbf3c;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #000;
+}
+.ggen_execute_btn:hover {
+  background: #82d44a;
+}
