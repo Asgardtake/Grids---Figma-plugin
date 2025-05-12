@@ -383,7 +383,7 @@ border: 1px solid #00BF06;
   margin-top: 4px;
 }
 
-.ggen_note {
+.ggen_note a {
   font-size: 16px;
   color: #fff;
   margin-bottom: 16px;
