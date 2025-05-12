@@ -452,7 +452,7 @@ text-align: left;
   height: 100%;
   background-color: #2E2E2E;
   z-index: 9999;
-  padding: 32px 24px 80px 24px;
+  padding: 24px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -465,7 +465,7 @@ text-align: left;
   font-size: 26px;
   font-weight: 700;
   color: #fff;
-  margin: 0 0 24px 0;
+  margin: 0;
   text-align: left;
 }
 
@@ -488,8 +488,7 @@ text-align: left;
   background-color: transparent;
   border: 1px solid #00BF06;
   border-radius: 32px;
-  cursor: pointer;
-  margin-bottom: 16px;
+  cursor: pointer;  
 }
 
 .ggen_overlay_close:hover {
