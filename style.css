@@ -391,11 +391,11 @@ border: 1px solid #00BF06;
 }
 .ggen_note a {  
   color: #fff; 
-  text-decoration: none;
+  text-decoration: underline;
 }
 .ggen_note a:hover {
   color: #00BF06;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .ggen_inputs {
