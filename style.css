@@ -383,11 +383,15 @@ border: 1px solid #00BF06;
   margin-top: 4px;
 }
 
-.ggen_note a {
+.ggen_note {
   font-size: 16px;
   color: #fff;
   margin-bottom: 16px;
   text-align: left;
+}
+.ggen_note a {  
+  color: #fff; 
+  text-decoration: none;
 }
 .ggen_note a:hover {
   color: #00BF06;
