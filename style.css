@@ -389,6 +389,9 @@ border: 1px solid #00BF06;
   margin-bottom: 16px;
   text-align: left;
 }
+.ggen_note a:hover {
+  color: #00BF06;
+}
 
 .ggen_inputs {
   display: grid;
