@@ -395,6 +395,7 @@ border: 1px solid #00BF06;
 }
 .ggen_note a:hover {
   color: #00BF06;
+    text-decoration: underline;
 }
 
 .ggen_inputs {
