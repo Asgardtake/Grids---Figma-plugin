@@ -479,9 +479,10 @@ text-align: left;
 }
 
 .ggen_overlay_close {
+width: 24%;
   margin-top: auto;
   align-self: center;
-  padding: 12px 32px;
+  padding: 6px 32px;
   font-size: 16px;
   font-weight: 600;
   color: #00BF06;
