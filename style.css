@@ -490,6 +490,7 @@ width: 24%;
   border: 1px solid #00BF06;
   border-radius: 32px;
   cursor: pointer;  
+    margin-bottom: 16px;
 }
 
 .ggen_overlay_close:hover {
